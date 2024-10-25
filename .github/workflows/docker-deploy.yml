@@ -24,4 +24,4 @@ jobs:
           context: .
           file: ./docker/Dockerfile
           push: true
-          tags: ghcr.io/shopware-stuff/${{ github.event.repository.name }}
+          tags: ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}
