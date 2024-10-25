@@ -13,20 +13,15 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v2
         
-      #- name: Login into Github Docker Registery
-      #  run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      - name: Login into Github Docker Registery
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-      - name: Login to GitHub Registry
-        uses: docker/login-action@v3
-        with:
-          logout: false
-          
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
           context: .
           file: ./docker/Dockerfile
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}
+          tags: ghcr.io/shopware-stuff/${{ github.event.repository.name }}
