@@ -25,4 +25,4 @@ jobs:
           context: .
           file: ./docker/Dockerfile
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:${GITHUB_REF/refs\/tags\//}
+          tags: ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:$GITHUB_REF_NAME
